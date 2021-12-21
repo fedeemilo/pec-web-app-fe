@@ -1,8 +1,14 @@
-import React from "react";
+import { useState } from "react";
+import Provider from "./context";
+import Home from "./Page/Home/Index";
 
 const App = () => {
+  const [data, setData] = useState(0);
+
   return (
-    <h1> Hola mundo</h1>
+    <Provider value={{data, setData}}>
+      <Home />
+    </Provider>
   );
 }
 
