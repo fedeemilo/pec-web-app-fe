@@ -1,14 +1,14 @@
-import React from 'react';
-import Index from './components/Title'
-import './App.css';
+import { useState } from "react";
+import Provider from "./context";
+import Home from "./Page/Home/Index";
 
-function App() {
+const App = () => {
+  const [data, setData] = useState(0);
+
   return (
-    <div className="App">
-      <Index >
-        Hola Mundo!
-     </Index>
-    </div>
+    <Provider value={{data, setData}}>
+      <Home />
+    </Provider>
   );
 }
 
