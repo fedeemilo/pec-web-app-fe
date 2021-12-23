@@ -1,14 +1,19 @@
 import { useContext } from "react";
 import { CONTEXT } from "../context";
 
+import styled from 'styled-components'
+
+const ButtonUI = styled('button') <{ color?: String }>`
+    width: 100%;
+    height: 3rem;
+    background-color: #5eb8d2;
+    color: #ffffff;
+`
+
 const Button = () => {
-    const CTX: any = useContext(CONTEXT);
 
-    let { data, setData } = CTX;
 
-    const oneMore = () => setData((data += 1));
-
-    return <button onClick={oneMore}>+1</button>;
+    return <ButtonUI>Buscar</ButtonUI>;
 };
 
 export default Button;
