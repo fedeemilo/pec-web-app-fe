@@ -2,11 +2,20 @@ import { useState } from "react";
 import Provider from "./context";
 import Home from "./Page/Home/Index";
 
-const App = () => {
-  const [data, setData] = useState(0);
 
+import { MenuMock } from './Mocks/Menu/Items';
+
+
+const graphData = {
+  'menu': {
+    'items': MenuMock
+  }
+}
+
+
+const App = () => {
   return (
-    <Provider value={{data, setData}}>
+    <Provider value={{...graphData}}>
       <Home />
     </Provider>
   );
