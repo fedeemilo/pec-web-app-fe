@@ -9,11 +9,11 @@ export const MenuMock : ItemType[] = [
     {
         type: '',
         value: 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png',
-        action: '/',
+        action: '/pag-1',
     },
     {
         type: '',
         value: 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png',
-        action: '/',
+        action: '/pag-2',
     },
 ];

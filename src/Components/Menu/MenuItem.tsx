@@ -4,9 +4,7 @@ import styled from 'styled-components';
 const Icon = styled.img`
     max-width: 100%;
 `;
-const MenuItemDiv = styled.div`
-
-`;
+const MenuItemDiv = styled.a``;
 
 interface MenuItemInterface {
     type: string;
@@ -22,8 +20,8 @@ const MenuItem: FunctionComponent<MenuItemInterface> = ({
     return (
         <>
             {
-                type === 'icon' && (<Icon src={value} />) || (
-                    <MenuItemDiv onClick={() => alert('HW')}>
+                type === 'Icon' && (<Icon src={value} />) || (
+                    <MenuItemDiv href={action}>
                         <Icon src={value} />
                     </MenuItemDiv>
                 )
