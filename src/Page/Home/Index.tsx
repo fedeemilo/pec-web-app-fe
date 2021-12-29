@@ -1,62 +1,87 @@
 import { Col, Container } from "../../Common/Grid/Index"
 import Box from "../../Common/UI/Box"
 import Subtitle from "../../Common/Typography/Subtitle"
-import Input from "../../Common/UI/Input"
 import Paragraph from "../../Common/Typography/Paragraph"
-import Button from "../../Common/UI/Button"
+import Form from "../../components/Form"
+
+const FormList = [
+    {
+        type: "number",
+        value: "",
+        label: "N° de línea fija",
+        placeholder: "N° de línea fija",
+        name: "lineaFija"
+    },
+    {
+        type: "number",
+        value: "",
+        label: "N° de línea móvil",
+        placeholder: "Número de línea móvil",
+        name: "lineaMovil"
+    },
+    // SELECT
+    {
+        type: "text",
+        value: "",
+        label: "Tipo de Documento",
+        placeholder: "DNI",
+        name: "tipoDoc"
+    },
+    {
+        type: "number",
+        value: "",
+        label: "N°  Documento",
+        placeholder: "00000000",
+        name: "nroDoc"
+    },
+    {
+        type: "number",
+        value: "",
+        label: "N° de Cuenta",
+        placeholder: "0000000000",
+        name: "nroCuenta"
+    },
+    {
+        type: "email",
+        value: "",
+        label: "Correo electrónico",
+        placeholder: "example@email.com",
+        name: "email"
+    }
+]
+
+const formFunctionHandler = ({
+    lineaFija,
+    lineaMovil,
+    tipoDoc,
+    nroDoc,
+    nroCuenta,
+    email
+}: any): any => {
+    console.log(lineaFija.value)
+    console.log(lineaFija.placeholder)
+    console.log(email.value)
+}
 
 const Home = () => {
     return (
         <Container>
             <Col size={1}>Menu</Col>
-            <Col size={11}>
+            <Col size={11} bgColor={"#f5f5f5"}>
                 <Subtitle color={"#303030"}>Búsqueda de cliente</Subtitle>
                 <Box width={"420px"} height={"27px"}></Box>
                 <Box width={"521px"} height={"80px"}></Box>
-                <Box width={"521px"} bgColor={"#ffffff"}>
+                <Box width={"521px"} height={"27.875rem"} bgColor={"#ffffff"}>
                     <Paragraph fontSize={".83rem"} color={"#888888"}>
                         Llene uno de los campos para realizar la búsqueda:
                     </Paragraph>
 
-                    <Container>
-                        <Col size={5}>
-                            <Input
-                                id={"lineaFija"}
-                                label={"N°de linea fija"}
-                                type={"number"}
-                                disabled
-                            ></Input>
-                            <Input
-                                id={"tipoDoc"}
-                                label={"Tipo de documento"}
-                                type={"select"}
-                                disabled
-                            ></Input>
-                            <Input
-                                id={"nroCuenta"}
-                                label={"N° Cuenta"}
-                                disabled
-                            ></Input>
-                        </Col>
-                        <Col size={5} ml={"3.5rem"}>
-                            <Input
-                                id={"lineaMovil"}
-                                label={"N° de linea"}
-                                disabled
-                            ></Input>
-                            <Input
-                                id={"nroDoc"}
-                                label={"N° Documento"}
-                                disabled
-                            ></Input>
-                            <Input
-                                id={"email"}
-                                label={"Correo electronico"}
-                                disabled
-                            ></Input>
-                        </Col>
-                        <Button bgColor={"#1f97ae"} txtColor={"#ffffff"} />
-                    </Container>
+                    <Form
+                        list={FormList}
+                        colSize={6}
+                        callback={formFunctionHandler}
+                        submitText={"Buscar"}
+                    />
                 </Box>
             </Col>
         </Container>
