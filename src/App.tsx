@@ -1,15 +1,27 @@
-import { useState } from "react";
-import Provider from "./context";
-import Home from "./Page/Home/Index";
+import { useState } from "react"
+import Provider from "./context"
+import Home from "./Page/Home/Index"
+import { createGlobalStyle } from "styled-components"
+
+const GlobalStyle = createGlobalStyle`
+
+    html {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+`
 
 const App = () => {
-    const [data, setData] = useState(0);
+    const [data, setData] = useState(0)
 
     return (
-        <Provider value={{ data, setData }}>
-            <Home />
-        </Provider>
-    );
-};
+        <>
+            <GlobalStyle />
+            <Provider value={{ data, setData }}>
+                <Home />
+            </Provider>
+        </>
+    )
+}
 
-export default App;
+export default App
