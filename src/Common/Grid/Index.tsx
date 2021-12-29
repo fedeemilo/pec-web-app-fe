@@ -14,7 +14,6 @@ export const Container: FunctionComponent = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100%;
 `
 
 export const Col: FunctionComponent<ColInterface> = styled("div")<{

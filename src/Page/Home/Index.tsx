@@ -71,7 +71,7 @@ const Home = () => {
                 <Subtitle color={"#303030"}>Búsqueda de cliente</Subtitle>
                 <Box width={"420px"} height={"27px"}></Box>
                 <Box width={"521px"} height={"80px"}></Box>
-                <Box width={"521px"} height={"27.875rem"} bgColor={"#ffffff"}>
+                <Box width={"521px"} bgColor={"#ffffff"}>
                     <Paragraph fontSize={".83rem"} color={"#888888"}>
                         Llene uno de los campos para realizar la búsqueda:
                     </Paragraph>
