@@ -5,21 +5,21 @@ import styled from 'styled-components';
 export type ItemType = {
     type: string;
     value: string;
-    action?: string;
+    action?: string; 
 };
 interface MenuInterface {
     item: ItemType[];
+    last: ItemType;
 };
 
 const MenuContainer = styled.div`
-    background: #FFF;
-    box-sizing: border-box;
-    height: 98vh;
-    margin-top: -8px;
-    position: relative;
+    display:flex;
+    flex-direction:column;
+    height: 90vh;
+    margin-top: 1rem;
 `;
 
-const Menu: FunctionComponent<MenuInterface> = ({ item }) => {
+const Menu: FunctionComponent<MenuInterface> = ({ item, last}) => {
 
     return (
         <MenuContainer>
@@ -38,7 +38,11 @@ const Menu: FunctionComponent<MenuInterface> = ({ item }) => {
                 position: 'absolute',
                 bottom: 0,
             }}>
-                lorem
+                <MenuItem
+                    type={last.type}
+                    value={last.value}
+                    action={last.action}
+                />
             </div>
         </MenuContainer>
     )

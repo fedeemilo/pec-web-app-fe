@@ -38,7 +38,7 @@ const Home = () => {
     return (
         <Container>
             <Col size={1}>
-                <Menu item={graphContext?.menu?.items} />
+                <Menu item={graphContext?.menu?.items} last={graphContext?.menu?.last} />
             </Col>
             <Col size={11}>
                 <Form list={FormList} colSize={6} callback={formFunctionHandler}/>
