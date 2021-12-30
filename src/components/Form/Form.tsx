@@ -36,6 +36,8 @@ interface FormInterface {
     callback: Function
     submitText?: string
 }
+
+
 const Form: FunctionComponent<FormInterface> = ({
     list,
     colSize,
@@ -44,9 +46,7 @@ const Form: FunctionComponent<FormInterface> = ({
 }) => {
     const formHandler = (e: any) => {
         e.preventDefault()
-
         console.log(e.target)
-
         return callback(e.target)
             ? callback(e.target)
             : console.error("You should send a callback function!")
@@ -54,7 +54,7 @@ const Form: FunctionComponent<FormInterface> = ({
 
     return (
         <FormContainer onSubmit={e => formHandler(e)}>
-            <Container>
+            <Container height={"auto"}>
                 {list?.map((props: FormList) => (
                     <FormItem {...props} colSize={colSize} />
                 ))}

@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react"
-import { FormList } from "./"
+import { FormList } from "./Form"
 import { Col } from "../../Common/Grid/Index"
 import styled from "styled-components"
 
@@ -17,10 +17,12 @@ const Input = styled.input`
     width: -webkit-fill-available;
     height: 1.8rem;
     font-size: 1rem;
-
     ::placeholder {
         color: #a8a8a8;
     }
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
 `
 
 const LabelSpan = styled.div`

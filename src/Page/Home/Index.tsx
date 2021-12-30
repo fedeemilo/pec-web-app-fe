@@ -2,7 +2,7 @@ import { Col, Container } from "../../Common/Grid/Index"
 import Box from "../../Common/UI/Box"
 import Subtitle from "../../Common/Typography/Subtitle"
 import Paragraph from "../../Common/Typography/Paragraph"
-import Form from "../../components/Form"
+import Form from "../../components/Form/Form"
 
 const FormList = [
     {
@@ -21,11 +21,11 @@ const FormList = [
     },
     // SELECT
     {
-        type: "text",
+        type: "select",
         value: "",
         label: "Tipo de Documento",
         placeholder: "DNI",
-        name: "tipoDoc"
+        name: "tipoDoc",
     },
     {
         type: "number",
@@ -65,12 +65,16 @@ const formFunctionHandler = ({
 
 const Home = () => {
     return (
-        <Container>
+        <Container height={"100vh"}>
             <Col size={1}>Menu</Col>
             <Col size={11} bgColor={"#f5f5f5"}>
                 <Subtitle color={"#303030"}>Búsqueda de cliente</Subtitle>
-                <Box width={"420px"} height={"27px"}></Box>
-                <Box width={"521px"} height={"80px"}></Box>
+                <Box width={"420px"} height={"27px"} bgColor={"#ffffff"}></Box>
+                <Box width={"521px"} height={"80px"} bgColor={"#ffffff"}>
+                    <Paragraph fontSize={".83rem"} color={"#888888"}>
+                        Seleccione un país para la búsqueda:
+                    </Paragraph>
+                </Box>
                 <Box width={"521px"} height={"27.875rem"} bgColor={"#ffffff"}>
                     <Paragraph fontSize={".83rem"} color={"#888888"}>
                         Llene uno de los campos para realizar la búsqueda:

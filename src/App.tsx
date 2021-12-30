@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Open Sans', sans-serif;
     }
     
-
 `
 
 const App = () => {

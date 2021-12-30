@@ -8,13 +8,18 @@ interface ColInterface {
     mt?: string
     bgColor?: string
 }
+interface ConInterface {
+    height: string;
+}
 
-export const Container: FunctionComponent = styled.div`
+export const Container: FunctionComponent<ConInterface> = styled("div")<{
+    height: string;
+}>`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100%;
+    height: ${props => (props.height)}
 `
 
 export const Col: FunctionComponent<ColInterface> = styled("div")<{
