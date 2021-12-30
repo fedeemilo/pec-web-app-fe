@@ -2,6 +2,7 @@ import { FunctionComponent, useState } from "react"
 import { FormList } from "./"
 import { Col } from "../../Common/Grid/Index"
 import styled from "styled-components"
+import { SelectItem } from "../../components/Form/SelectItem"
 
 const InputContainer = styled.div`
     overflow: hidden;
@@ -21,6 +22,10 @@ const Input = styled.input`
     ::placeholder {
         color: #a8a8a8;
     }
+
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
 `
 
 const LabelSpan = styled.div`
@@ -29,13 +34,16 @@ const LabelSpan = styled.div`
     font-size: 0.8rem;
 `
 
+
+
 const FormItem: FunctionComponent<FormList> = ({
     type,
     value,
     label,
     colSize,
     placeholder,
-    name
+    name,
+    imSelect
 }) => {
     let size: number = colSize || 6
 
@@ -45,16 +53,37 @@ const FormItem: FunctionComponent<FormList> = ({
         <Col size={size}>
             <InputContainer>
                 <LabelSpan>{label}</LabelSpan>
-                <Input
-                    type={type}
-                    value={valueState}
-                    placeholder={placeholder}
-                    name={name}
-                    onChange={e => setValueState(e.target.value)}
-                />
+                {
+                    imSelect ? (<SelectItem />) : (
+                        <Input
+                            type={type}
+                            value={valueState}
+                            placeholder={placeholder}
+                            name={name}
+                            onChange={e => setValueState(e.target.value)}
+                        />
+
+                    )
+                }
+
             </InputContainer>
         </Col>
     )
 }
 
 export default FormItem
+
+
+
+
+
+/*
+<>
+{
+    type === 'Icon' && (<Icon src={value} />) || (
+        <MenuItemDiv href={action}>
+            <Icon src={value} />
+        </MenuItemDiv>
+    )
+}
+</>*/

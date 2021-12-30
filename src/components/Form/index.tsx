@@ -28,6 +28,7 @@ export type FormList = {
     colSize?: number
     placeholder?: string
     name?: string
+    imSelect?: boolean
 }
 
 interface FormInterface {

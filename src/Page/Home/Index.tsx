@@ -3,6 +3,7 @@ import Box from "../../Common/UI/Box"
 import Subtitle from "../../Common/Typography/Subtitle"
 import Paragraph from "../../Common/Typography/Paragraph"
 import Form from "../../components/Form"
+import { SelectItem } from "../../components/Form/SelectItem"
 
 const FormList = [
     {
@@ -20,12 +21,14 @@ const FormList = [
         name: "lineaMovil"
     },
     // SELECT
+
     {
-        type: "text",
+        type: "select",
         value: "",
         label: "Tipo de Documento",
         placeholder: "DNI",
-        name: "tipoDoc"
+        name: "tipoDoc",
+        imSelect: true
     },
     {
         type: "number",
@@ -75,7 +78,7 @@ const Home = () => {
                     <Paragraph fontSize={".83rem"} color={"#888888"}>
                         Llene uno de los campos para realizar la búsqueda:
                     </Paragraph>
-
+                    
                     <Form
                         list={FormList}
                         colSize={6}
