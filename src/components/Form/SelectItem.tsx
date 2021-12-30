@@ -11,6 +11,7 @@ const Select = styled.select`
     width: 97%;
     height: 1.8rem;
     padding-left: 17px;
+    color: #707070;
 `
 
 
