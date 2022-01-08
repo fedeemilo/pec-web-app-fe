@@ -2,6 +2,7 @@ import { useState } from "react"
 import Provider from "./context"
 import Home from "./Page/Home/Index"
 import { createGlobalStyle } from "styled-components"
+import { generalData } from "./Mocks/Server"
 
 const GlobalStyle = createGlobalStyle`
 
@@ -11,15 +12,17 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: 'Open Sans', sans-serif;
-        
+        font-family: 'Open Sans', sans-serif;   
+    }
+
+    img {
+        pointer-events: none;
     }
     
-
 `
 
 const App = () => {
-    const [data, setData] = useState(0)
+    const [data, setData] = useState(generalData)
 
     return (
         <>

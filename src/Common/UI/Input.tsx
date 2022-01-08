@@ -12,8 +12,8 @@ const InputGroup = styled.div`
 `
 
 const InputLabel = styled.label`
-    color: #888888;
-    font-size: 0.8rem;
+    color: #5a5a5a;
+    font-size: 0.275rem;
 `
 
 const InputField = styled.input`

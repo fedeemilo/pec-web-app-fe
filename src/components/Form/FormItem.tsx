@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react"
-import { FormList } from "./"
+import { FormList } from "../../Types/formTypes"
 import { Col } from "../../Common/Grid/Index"
 import styled from "styled-components"
 
@@ -8,15 +8,20 @@ const InputContainer = styled.div`
     padding: 10px;
     position: relative;
 `
-const Input = styled.input`
+
+const Input = styled("input")<{
+    enabled?: string
+}>`
     border: none;
     border-radius: 2px;
-    box-shadow: 0px 0px 1px 0px;
+    border: 1px solid #e0e0e0;
     outline: none;
     padding: 10px 17px;
     width: -webkit-fill-available;
     height: 1.8rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: ${props => (!props.enabled ? "#f0f0f0" : "#ffffff")};
 
     ::placeholder {
         color: #a8a8a8;
@@ -26,7 +31,8 @@ const Input = styled.input`
 const LabelSpan = styled.div`
     padding-bottom: 10px;
     color: #707070;
-    font-size: 0.8rem;
+    color: #5a5a5a;
+    font-size: 0.75rem;
 `
 
 const FormItem: FunctionComponent<FormList> = ({
@@ -35,9 +41,10 @@ const FormItem: FunctionComponent<FormList> = ({
     label,
     colSize,
     placeholder,
-    name
+    name,
+    clickInput
 }) => {
-    let size: number = colSize || 6
+    const size: number = colSize || 6
 
     const [valueState, setValueState] = useState(value)
 
@@ -51,6 +58,7 @@ const FormItem: FunctionComponent<FormList> = ({
                     placeholder={placeholder}
                     name={name}
                     onChange={e => setValueState(e.target.value)}
+                    onClick={clickInput}
                 />
             </InputContainer>
         </Col>

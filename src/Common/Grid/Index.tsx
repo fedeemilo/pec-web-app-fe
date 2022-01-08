@@ -9,11 +9,17 @@ interface ColInterface {
     bgColor?: string
 }
 
-export const Container: FunctionComponent = styled.div`
+interface ContainerIterface {
+    wrap?: Boolean
+}
+
+export const Container: FunctionComponent<ContainerIterface> = styled("div")<{
+    wrap?: Boolean
+}>`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: ${props => (props.wrap ? "wrap" : "no-wrap")};
 `
 
 export const Col: FunctionComponent<ColInterface> = styled("div")<{

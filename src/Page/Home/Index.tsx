@@ -1,83 +1,65 @@
+import { useContext } from "react"
 import { Col, Container } from "../../Common/Grid/Index"
 import Box from "../../Common/UI/Box"
-import Subtitle from "../../Common/Typography/Subtitle"
 import Paragraph from "../../Common/Typography/Paragraph"
 import Form from "../../components/Form"
+import { CONTEXT } from "../../context"
 
-const FormList = [
-    {
-        type: "number",
-        value: "",
-        label: "N° de línea fija",
-        placeholder: "N° de línea fija",
-        name: "lineaFija"
-    },
-    {
-        type: "number",
-        value: "",
-        label: "N° de línea móvil",
-        placeholder: "Número de línea móvil",
-        name: "lineaMovil"
-    },
-    // SELECT
-    {
-        type: "text",
-        value: "",
-        label: "Tipo de Documento",
-        placeholder: "DNI",
-        name: "tipoDoc"
-    },
-    {
-        type: "number",
-        value: "",
-        label: "N°  Documento",
-        placeholder: "00000000",
-        name: "nroDoc"
-    },
-    {
-        type: "number",
-        value: "",
-        label: "N° de Cuenta",
-        placeholder: "0000000000",
-        name: "nroCuenta"
-    },
-    {
-        type: "email",
-        value: "",
-        label: "Correo electrónico",
-        placeholder: "example@email.com",
-        name: "email"
-    }
-]
-
-const formFunctionHandler = ({
-    lineaFija,
-    lineaMovil,
-    tipoDoc,
-    nroDoc,
-    nroCuenta,
-    email
-}: any): any => {
-    console.log(lineaFija.value)
-    console.log(lineaFija.placeholder)
-    console.log(email.value)
+const formFunctionHandler = (formData: any): any => {
+    console.log(formData)
 }
 
 const Home = () => {
+    const CTX: any = useContext(CONTEXT)
+    const {
+        data: { FormElementsList, FormCountryList }
+    } = CTX
+
+    const countryIconHandler = (e: any) => {
+        const activeElems = document.querySelectorAll(".active")
+
+        activeElems.forEach(img => img.classList.remove("active"))
+        e.target.classList.toggle("active")
+    }
+
     return (
         <Container>
             <Col size={1}>Menu</Col>
             <Col size={11} bgColor={"#f5f5f5"}>
-                <Subtitle color={"#303030"}>Búsqueda de cliente</Subtitle>
-                <Box width={"420px"} height={"27px"}></Box>
-                <Box width={"521px"} height={"80px"}></Box>
-                <Box width={"521px"} bgColor={"#ffffff"}>
-                    <Paragraph fontSize={".83rem"} color={"#888888"}>
+                <Box width={"32.5rem"} height={"27px"}></Box>
+                <Box width={"32.5rem"}>
+                    <Paragraph fontSize={".783rem"} color={"#5a5a5a"}>
+                        Seleccione un país para la búsqueda:
+                    </Paragraph>
+
+                    <Container>
+                        {FormCountryList.map((country: any) => (
+                            <Box
+                                width={"7rem"}
+                                height={".1rem"}
+                                margin={".1rem .59rem"}
+                                padding={"20px"}
+                                display={"flex"}
+                                fontSize={".9rem"}
+                                fontWeight={"bold"}
+                                cursor={"pointer"}
+                                onClick={countryIconHandler}
+                            >
+                                {country.name}
+                                <img src={country.icon} alt="countryIcon" />
+                            </Box>
+                        ))}
+                    </Container>
+                </Box>
+
+                {/* Form Box */}
+                <Box width={"32.5rem"} bgColor={"#ffffff"}>
+                    <Paragraph fontSize={".783rem"} color={"#5a5a5a"}>
                         Llene uno de los campos para realizar la búsqueda:
                     </Paragraph>
 
                     <Form
-                        list={FormList}
+                        list={FormElementsList}
                         colSize={6}
                         callback={formFunctionHandler}
                         submitText={"Buscar"}
