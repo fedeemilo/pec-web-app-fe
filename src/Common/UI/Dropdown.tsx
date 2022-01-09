@@ -7,12 +7,17 @@ import {
 } from "react"
 import styled from "styled-components"
 import { Col } from "../Grid/Index"
+import { Image } from "../UI"
+import arrowDown from "../../Assets/img/arrow-down.svg"
+import arrowUp from "../../Assets/img/arrow-up.svg"
 
 interface DropdownType extends SelectHTMLAttributes<HTMLSelectElement> {
     id?: string
     label: string
     options?: any[]
     colSize?: number
+    selected?: string
+    isForm?: boolean
 }
 
 const DropdownLabel = styled.label`
@@ -24,38 +29,36 @@ const DropdownLabel = styled.label`
 `
 
 const DropdownWrapper = styled("div")<{
-    bgEnabled?: string
+    bgEnabled?: boolean
+    width?: string
+    border?: string
+    bgColor?: string
+    padding?: string
 }>`
     position: relative;
-    border: 1px solid #dadce0;
-    border-radius: 4px;
-    padding: 12.4px 22px;
-    height: 1.415rem;
-    width: 12.3rem;
+    border: ${props => props?.border};
+    border-radius: 3px;
+    padding: ${props => props?.padding};
+    height: 1.28rem;
+    width: ${props => (props?.width ? props.width : "12.3rem")};
     left: 0.6rem;
-    top: 0.91rem;
+    top: 0.95rem;
     font-size: 0.9rem;
     color: #a8a8a8;
-    border: 1px solid #e0e0e0;
     background-color: ${props => (!props.bgEnabled ? "#f0f0f0" : "#ffffff")};
     cursor: pointer;
 `
 
-const ItemSelected = styled.div`
+const ItemSelected = styled("div")<{
+    width?: string
+    color?: string
+}>`
     display: flex;
     justify-content: space-between;
     padding-right: 20px;
-    width: 150px;
+    width: ${props => (props?.width ? props.width : "9.375rem")};
     text-decoration: none;
-`
-
-const DropdownArrow = styled.div`
-    position: relative;
-    left: 3rem;
-    bottom: 0.15rem;
-    height: 1rem;
-    width: 1rem;
-    font-size: 1.1rem;
+    color: ${props => props?.color};
 `
 
 const OptionsWrapper = styled.div``
@@ -74,6 +77,7 @@ const OptionList: FunctionComponent<any> = styled("ul")<{
     min-width: 13.8rem;
     border: 1px solid #d7d7d7;
     border-radius: 4px;
+    z-index: 999999;
 `
 
 const OptionItem = styled.li`
@@ -93,38 +97,47 @@ const Dropdown: FunctionComponent<DropdownType> = ({
     id,
     label,
     options,
-    colSize
+    colSize,
+    selected,
+    isForm
 }) => {
-    const size: number = colSize || 6
-
     const [displayDropList, setDisplayDropList] = useState(false)
-    const [typeSelected, setTypeSelected] = useState('DNI')
+    const [typeSelected, setTypeSelected] = useState(selected)
 
-    const dropdownRef = useRef<HTMLDivElement>(null)
-    const arrowIconRef = useRef<HTMLDivElement>(null)
-
-    const handleClickDropdown: MouseEventHandler<HTMLDivElement> = () => {
-        const arrowIconCurrent = arrowIconRef.current as HTMLDivElement
-
-        setDisplayDropList(!displayDropList)
-        arrowIconCurrent.innerHTML = displayDropList ? "&#x25BC;" : "&#x25B2;"
-    }
+    const size: number = colSize || 6
 
     const handleClickOption: MouseEventHandler<HTMLLIElement> = (e: any) => {
         setTypeSelected(e.target.textContent)
     }
 
+    const handleClickDropdown: MouseEventHandler<HTMLDivElement> = (e: any) => {
+        setDisplayDropList(!displayDropList)
+    }
+
     return (
         <Col size={size}>
-            <DropdownLabel>{label}</DropdownLabel>
+            {isForm && <DropdownLabel>{label}</DropdownLabel>}
             <DropdownWrapper
                 id={id}
-                ref={dropdownRef}
                 onClick={handleClickDropdown}
+                border={isForm ? "1px solid #e0e0e0" : ""}
+                bgEnabled={!isForm}
+                padding={isForm ? "13.68px 22px" : "0 0 0 1.5rem"}
             >
-                <ItemSelected>
+                <ItemSelected
+                    width={selected === "Seleccione un Perfil" ? "14rem" : ""}
+                    color={!isForm ? "#5a5a5a" : ""}
+                >
                     {typeSelected}
-                    <DropdownArrow ref={arrowIconRef}>&#x25BC;</DropdownArrow>
+                    <Image
+                        src={displayDropList ? arrowUp : arrowDown}
+                        width={.8}
+                        left={isForm ? 3.5 : -0.8}
+                        select={"none"}
+                        filter={
+                            "invert(36%) sepia(0%) saturate(1755%) hue-rotate(142deg) brightness(96%) contrast(94%);"
+                        }
+                    />
                 </ItemSelected>
                 <OptionsWrapper>
                     <OptionList display={displayDropList}>

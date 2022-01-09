@@ -1,8 +1,9 @@
 import argentinaIcon from "../../Assets/img/argentina.svg"
 import uruguayIcon from "../../Assets/img/uruguay.svg"
 import paraguayIcon from "../../Assets/img/paraguay.svg"
+import adviserIcon from "../../Assets/img/adviser.svg"
 
-export const FormElementsList = [
+const FormElementsList = [
     {
         type: "number",
         value: "",
@@ -36,7 +37,6 @@ export const FormElementsList = [
         id: "typeDoc",
         type: "select",
         label: "Tipo de Documento",
-        name: "typeDoc",
         options: [
             {
                 value: "DNI",
@@ -61,7 +61,7 @@ export const FormElementsList = [
     }
 ]
 
-export const FormCountryList = [
+const FormCountryList = [
     {
         name: "Argentina",
         icon: argentinaIcon
@@ -76,8 +76,118 @@ export const FormCountryList = [
     }
 ]
 
+const AdviserObj= {
+    title: "Asesor",
+    icon: adviserIcon
+}
+
+export const dropHeaderStyle = {
+    style: `
+        position: absolute;
+        bottom: 10rem;
+    `
+}
+
+const processDropdownObj = {
+    id: "process",
+    label: "Tipo de Documento",
+    
+    options: [
+        {
+            id: "",
+            value: "Seleccione Perfil"
+        },
+        {
+            id: "622",
+            value: "622"
+        },
+        {
+            id: "cobranzas",
+            value: "Cobranzas"
+        },
+        {
+            id: "corporativo",
+            value: "Corporativo"
+        },
+        {
+            id: "delivery",
+            value: "Delivery"
+        },
+        {
+            id: "digital",
+            value: "Digital"
+        },
+        {
+            id: "fija",
+            value: "Fija"
+        },
+        {
+            id: "generales",
+            value: "Generales"
+        },
+        {
+            id: "ger",
+            value: "GER"
+        },
+        {
+            id: "loyalty",
+            value: "Loyalty"
+        },
+        {
+            id: "loyaltyOut",
+            value: "Loyalty OUT"
+        },
+        {
+            id: "personalizada",
+            value: "Personalizada"
+        },
+        {
+            id: "soper",
+            value: "Soper"
+        },
+        {
+            id: "tecnica",
+            value: "Técnica"
+        },
+        {
+            id: "telemarketing",
+            value: "Telemarketing"
+        },
+        {
+            id: "PEC_CACS",
+            value: "Pec CACS"
+        },
+        {
+            id: "PEC_COBRANZAS",
+            value: "Pec Cobranzas"
+        },
+        {
+            id: "PEC_CONSULTAS",
+            value: "Pec Consultas"
+        },
+        {
+            id: "PEC_CORPO",
+            value: "Pec Corporativo"
+        },
+        {
+            id: "PEC_TECNICA_2DA",
+            value: "Pec Técnica 2da. Línea"
+        },
+        {
+            id: "PEC_TRAC",
+            value: "Pec TRAC"
+        },
+        {
+            id: "WDC_ASESOR",
+            value: "Pec WDC Asesor"
+        }
+    ]
+}
+
 // GENERAL DATA
 export const generalData = {
     FormElementsList,
-    FormCountryList
+    FormCountryList,
+    AdviserObj,
+    processDropdownObj
 }

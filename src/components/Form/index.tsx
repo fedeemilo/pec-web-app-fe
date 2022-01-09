@@ -1,29 +1,11 @@
 import { FunctionComponent, useRef } from "react"
 import { Container } from "../../Common/Grid/Index"
 import FormItem from "./FormItem"
-import styled from "styled-components"
 import { FormList, FormInterface } from "../../Types/formTypes"
-import Dropdown from "../../Common/UI/Dropdown"
+import { Dropdown } from "../../Common/UI"
 import { setAttributes } from "../../Utils/functions"
 import { elementAttrs } from "../../Mocks/UI/attributes"
-
-const Submit = styled.input`
-    outline: none;
-    padding: auto 22px;
-    border: 1px solid #dadce0;
-    font-size: 18px;
-    border-radius: 5px;
-    width: 97%;
-    height: 3.3rem;
-    margin: 1.07rem auto;
-    background-color: #1f97ae;
-    color: #ffffff;
-    cursor: pointer;
-`
-
-const FormContainer = styled.form`
-    background-color: #ffffff;
-`
+import { FormContainer, Submit } from "./FormStyles"
 
 const Form: FunctionComponent<FormInterface> = ({
     list,
@@ -53,8 +35,6 @@ const Form: FunctionComponent<FormInterface> = ({
             homeForm: { disabledAttrs, enabledAttrs }
         } = elementAttrs
 
-        console.log(dropdownElem)
-
         inputSelected.name === "nroDoc"
             ? (dropdownElem.style.backgroundColor = "#ffffff")
             : (dropdownElem.style.backgroundColor = "#f0f0f0")
@@ -74,8 +54,10 @@ const Form: FunctionComponent<FormInterface> = ({
                 return (
                     <Dropdown
                         {...props}
+                        selected={"DNI"}
                         colSize={6}
                         options={props.options}
+                        isForm={true}
                     />
                 )
 
@@ -87,6 +69,7 @@ const Form: FunctionComponent<FormInterface> = ({
                 />
             )
         })
+
 
     return (
         <FormContainer onSubmit={e => formHandler(e)} ref={formRef}>
