@@ -8,7 +8,7 @@ export type FormList = {
     colSize?: number
     placeholder?: string
     name?: string
-    clickInput?: MouseEventHandler,
+    inputHandler?: MouseEventHandler,
     options?: any[],
     id?: string
 }
@@ -19,5 +19,5 @@ export interface FormInterface {
     colSize?: number
     callback: Function
     submitText?: string
-    clickInput?: MouseEventHandler
+    inputHandler?: MouseEventHandler
 }

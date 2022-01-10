@@ -6,7 +6,7 @@ const ButtonUI = styled("button")<{
     width?: string
 }>`
     width: ${props => (props?.width ? props?.width : "100%")};
-    height: 3rem;
+    height: 2.7rem;
     border: none;
     border-radius: 4px;
     background-color: ${props => props.bgColor};

@@ -1,11 +1,12 @@
-import { FunctionComponent, useRef } from "react"
+import { FunctionComponent, useRef, useEffect } from "react"
 import { Container } from "../../Common/Grid/Index"
 import FormItem from "./FormItem"
 import { FormList, FormInterface } from "../../Types/formTypes"
 import { Dropdown } from "../../Common/UI"
-import { setAttributes } from "../../Utils/functions"
-import { elementAttrs } from "../../Mocks/UI/attributes"
+import { attributesHandler, formHandler } from "../../Utils/functions"
 import { FormContainer, Submit } from "./FormStyles"
+import { elementAttrs } from "../../Mocks/UI/attributes"
+import { COLORS } from "../../Styling"
 
 const Form: FunctionComponent<FormInterface> = ({
     list,
@@ -14,16 +15,8 @@ const Form: FunctionComponent<FormInterface> = ({
     submitText
 }) => {
     const formRef = useRef<HTMLFormElement>(null)
-
-    const formHandler = (e: any) => {
-        e.preventDefault()
-
-        return callback(e.target)
-            ? callback(e.target)
-            : console.error("You should send a callback function!")
-    }
-
-    const clickInput = (e: any) => {
+    
+    const inputHandler = (e: any) => {
         const inputSelected = e.target
         const formCurrent = formRef.current as HTMLFormElement
         const inputsList = formCurrent.querySelectorAll("input")
@@ -35,15 +28,18 @@ const Form: FunctionComponent<FormInterface> = ({
             homeForm: { disabledAttrs, enabledAttrs }
         } = elementAttrs
 
-        inputSelected.name === "nroDoc"
-            ? (dropdownElem.style.backgroundColor = "#ffffff")
-            : (dropdownElem.style.backgroundColor = "#f0f0f0")
+        const dropdownBgColor = {
+            
+        }
+
+        dropdownElem.style.backgroundColor =
+            inputSelected.name === "nroDoc" ? COLORS.white : COLORS.smoothGray
 
         inputsList.forEach(input => {
             if (input.type !== "submit") {
                 inputSelected.placeholder !== input.placeholder
-                    ? setAttributes(input, disabledAttrs)
-                    : setAttributes(input, enabledAttrs)
+                    ? attributesHandler(input, disabledAttrs)
+                    : attributesHandler(input, enabledAttrs)
             }
         })
     }
@@ -65,14 +61,13 @@ const Form: FunctionComponent<FormInterface> = ({
                 <FormItem
                     {...props}
                     colSize={colSize}
-                    clickInput={clickInput}
+                    inputHandler={e => inputHandler(e)}
                 />
             )
         })
 
-
     return (
-        <FormContainer onSubmit={e => formHandler(e)} ref={formRef}>
+        <FormContainer onSubmit={e => formHandler(e, callback)} ref={formRef}>
             <Container wrap={true}>
                 {renderFormElements()}
                 <Submit type={`submit`} value={submitText || "Enviar"} />

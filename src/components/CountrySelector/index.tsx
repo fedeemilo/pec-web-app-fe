@@ -1,9 +1,8 @@
 import { useContext } from "react"
 import { CONTEXT } from "../../context"
 import { Container } from "../../Common/Grid/Index"
-import Text from "../../Common/UI/Text"
-import Box from "../../Common/UI/Box"
-import Image from "../../Common/UI/Image"
+import { Text, Box, Image } from "../../Common/UI"
+import { countryIconHandler } from "../../Utils/functions"
 
 const CountrySelector = () => {
     const CTX: any = useContext(CONTEXT)
@@ -11,19 +10,9 @@ const CountrySelector = () => {
         data: { FormCountryList }
     } = CTX
 
-    const countryIconHandler = (e: any) => {
-        const activeElems = document.querySelectorAll(".active")
-
-        activeElems.forEach(img => img.classList.remove("active"))
-        e.target.classList.toggle("active")
-    }
-
     return (
         <Box width={"32.5rem"}>
-            <Text
-                size={".783rem"}
-                margin={"0 0 1.4rem 0.49rem"}
-            >
+            <Text size={".783rem"} margin={"0 0 1.4rem 0.49rem"}>
                 Seleccione un país para la búsqueda:
             </Text>
 
@@ -40,10 +29,7 @@ const CountrySelector = () => {
                         onClick={countryIconHandler}
                     >
                         <Image src={country.icon} alt="countryIcon" />
-                        <Text
-                            size={"0.87rem"}
-                            margin={"0 0 .8rem 0.49rem"}
-                        >
+                        <Text size={"0.87rem"} margin={"0 0 .8rem 0.49rem"}>
                             {country.name}
                         </Text>
                     </Box>

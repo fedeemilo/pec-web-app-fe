@@ -25,7 +25,7 @@ export const Input = styled("input")<{
     }
 `
 
-export const LabelSpan = styled.div`
+export const LabelSpan = styled.label`
     padding-bottom: 10px;
     color: #707070;
     color: #5a5a5a;

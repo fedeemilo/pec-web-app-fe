@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import { generalData } from "./Mocks/Server"
 import Provider from "./context"
 import Home from "./Page/Home/Index"
+import { COLORS } from "./Styling"
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -12,10 +13,20 @@ const GlobalStyle = createGlobalStyle`
 
     html {
         font-family: 'Open Sans', sans-serif;   
+        height: 100%;
+    }
+
+    body {
+        min-height: 100%;
+        display: flex;
+        margin: 0;
+        padding: 0; 
+        background-color: ${COLORS.bgColor};
     }
 
     img, p {
         pointer-events: none;
+        user-select: none;
     }
 `
 

@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent, useState, useRef } from "react"
 import { FormList } from "../../Types/formTypes"
 import { Col } from "../../Common/Grid/Index"
 import { Input, InputContainer, LabelSpan } from './FormStyles'
@@ -10,10 +10,11 @@ const FormItem: FunctionComponent<FormList> = ({
     colSize,
     placeholder,
     name,
-    clickInput
+    inputHandler
 }) => {
     const size: number = colSize || 6
     const [valueState, setValueState]: any = useState(value)
+    
 
     return (
         <Col size={size}>
@@ -25,7 +26,7 @@ const FormItem: FunctionComponent<FormList> = ({
                     placeholder={placeholder}
                     name={name}
                     onChange={e => setValueState(e.target.value)}
-                    onClick={clickInput}
+                    onClick={inputHandler}
                 />
             </InputContainer>
         </Col>

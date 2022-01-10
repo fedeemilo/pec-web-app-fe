@@ -53,6 +53,7 @@ const FormElementsList = [
         ]
     },
     {
+        id: "nroDoc",
         type: "number",
         value: "",
         label: "N°  Documento",
@@ -76,22 +77,15 @@ const FormCountryList = [
     }
 ]
 
-const AdviserObj= {
+const AdviserObj = {
     title: "Asesor",
-    icon: adviserIcon
-}
-
-export const dropHeaderStyle = {
-    style: `
-        position: absolute;
-        bottom: 10rem;
-    `
+    icon: adviserIcon,
+    name: "Roberto Gomez"
 }
 
 const processDropdownObj = {
     id: "process",
-    label: "Tipo de Documento",
-    
+
     options: [
         {
             id: "",

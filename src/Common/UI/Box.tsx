@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { COLORS } from '../../Styling'
 
 const Box = styled("div")<{
     width: string
@@ -16,10 +17,11 @@ const Box = styled("div")<{
     justify-content: ${props => (props.display === "flex" ? "center" : "")};
     width: ${props => props.width};
     height: ${props => (props?.height ? props?.height : "auto")};
-    background-color: ${props => (props.bgColor ? props.bgColor : "#ffffff")};
-    border: 0.5px solid #d3d3d3;
+    background-color: ${props =>
+        props.bgColor ? props.bgColor : COLORS.white};
+    border: 0.5px solid ${COLORS.lightGray};
     border-radius: 4px;
-    margin: ${props => (props.margin ? props.margin : "1.6875rem")};
+    margin: ${props => (props.margin ? props.margin : "1.155rem")};
     padding: ${props => (props.padding ? props.padding : "20px 30px")};
     font-size: ${props => props.fontSize};
     font-weight: ${props => props.fontWeight};
@@ -27,7 +29,7 @@ const Box = styled("div")<{
 
     .active {
         transition: 280ms;
-        box-shadow: 0px 0px 0px 2px #57b4e5;
+        box-shadow: 0px 0px 0px 2px ${COLORS.lightBlue};
     }
 `
 
