@@ -1,7 +1,3 @@
-/* Set multiple attributes of an element at once  */
-
-import { elementAttrs } from "../Mocks/UI/attributes"
-
 /* Country Selector handler functions */
 
 export const countryIconHandler = (e: any) => {
@@ -39,26 +35,4 @@ export const formHandler = (e: any, callback: Function) => {
     return callback(e.target)
         ? callback(e.target)
         : console.error("You should send a callback function!")
-}
-
-export const inputHandler = (e: any, formCurrent: HTMLFormElement) => {
-    const inputSelected = e.target
-    const inputsList = formCurrent.querySelectorAll("input")
-    const dropdownElem = document.querySelector("#typeDoc") as HTMLDivElement
-
-    const {
-        homeForm: { disabledAttrs, enabledAttrs }
-    } = elementAttrs
-
-    inputSelected.name === "nroDoc"
-        ? (dropdownElem.style.backgroundColor = "#ffffff")
-        : (dropdownElem.style.backgroundColor = "#f0f0f0")
-
-    inputsList.forEach(input => {
-        if (input.type !== "submit") {
-            inputSelected.placeholder !== input.placeholder
-                ? attributesHandler(input, disabledAttrs)
-                : attributesHandler(input, enabledAttrs)
-        }
-    })
 }

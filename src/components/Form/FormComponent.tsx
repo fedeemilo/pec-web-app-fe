@@ -14,7 +14,7 @@ const FormComponent = () => {
     }
 
     return (
-        <Box width={"32.5rem"} bgColor={"#ffffff"}>
+        <Box width={32.5} bgColor={"#ffffff"} display={"block"}>
             <Text
                 size={".783rem"}
                 color={"#5a5a5a"}

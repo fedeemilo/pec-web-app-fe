@@ -11,21 +11,22 @@ const CountrySelector = () => {
     } = CTX
 
     return (
-        <Box width={"32.5rem"}>
+        <Box width={32.5} display={"block"}>
             <Text size={".783rem"} margin={"0 0 1.4rem 0.49rem"}>
                 Seleccione un país para la búsqueda:
             </Text>
 
             <Container>
-                {FormCountryList.map((country: any) => (
+                {FormCountryList.map((country: any, i: number) => (
                     <Box
-                        width={"7.1rem"}
-                        height={".1rem"}
+                        key={i}
+                        width={7.1}
+                        height={0.1}
                         margin={".1rem .59rem"}
                         padding={"20px"}
-                        display={"flex"}
-                        fontWeight={"bold"}
-                        cursor={"pointer"}
+                        fWeight={"bold"}
+                        justify={"center"}
+                        alignItems={"center"}
                         onClick={countryIconHandler}
                     >
                         <Image src={country.icon} alt="countryIcon" />

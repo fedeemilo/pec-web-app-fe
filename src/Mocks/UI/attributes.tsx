@@ -2,8 +2,8 @@
 export const elementAttrs = {
     homeForm: {
         disabledAttrs: {
-            disabled: "true",
-            readOnly: "true",
+            // disabled: "true",
+            // readOnly: "true",
             value: "",
             style: "background-color: #f0f0f0"
         },

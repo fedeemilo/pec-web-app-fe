@@ -12,7 +12,7 @@ const Image = styled("img")<{
     width: ${props => props?.width}rem;
     margin: ${props => props?.margin};
     filter : ${props => props?.filter};
-    user-select: ${props => props?.select}
+    user-select: none;
 `
 
 export default Image
